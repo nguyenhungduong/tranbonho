@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bảo Hân</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body id="playButton" style="background-color: rgb(255, 218, 232);">
+    <h3 data-text="Em ấn vào trái tim đi">Em ấn vào trái tim đi</h3>
+    <audio id="audioPlayer" src="./mt4.mp3"></audio> 
+    <script src="./js/three.min.js"></script>
+    <script src="./js/MeshSurfaceSampler.js"></script>
+    <script src="./js/TrackballControls.js"></script>
+    <script src="./js/simplex-noise.js"></script>
+    <script src="./js/OBJLoader.js"></script>
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script>
+      const playButton = document.getElementById("playButton");
+      const audioPlayer = document.getElementById("audioPlayer");
+  
+      playButton.addEventListener("click", function() {
+          audioPlayer.play();
+      });
+    </script>
+</body>
+
+</html>

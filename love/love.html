@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="love.css">
+    <title>Bảo Hân</title>
+</head>
+<body>
+    <!-- Container for windows -->
+    <div id="appContainer"></div>
+    <!-- Nút "Ấn vào" -->
+    <button id="centerButton" onclick="navigateToPage()">Ấn vào đấy đi🥺</button>
+    <!-- Audio element -->
+    <audio id="backgroundMusic" src="./nhac.mp3" preload="auto"></audio>
+
+    <script>
+        // Hàm đóng cửa sổ
+        function closeWindow(event) {
+            event.target.closest(".app-window").style.display = "none";
+        }
+
+        // Hàm điều hướng sang trang khác
+        function navigateToPage() {
+            window.location.href = "./heart/heart.html"
+        }
+
+        // Tạo 100 cửa sổ ứng dụng với vị trí ngẫu nhiên
+        const appContainer = document.getElementById("appContainer");
+        const containerWidth = window.innerWidth;
+        const containerHeight = window.innerHeight;
+
+        for (let i = 0; i < 100; i++) {
+            const appWindow = document.createElement("div");
+            appWindow.className = "app-window";
+            appWindow.innerHTML = `
+                <div class="window-header">
+                    <span>Tràn Bộ nhớ</span>
+                    <button class="close-btn" onclick="closeWindow(event)">-</button>
+                </div>
+                <div class="window-content">
+                    <p>Anh nhớ em💞</p>
+                </div>
+            `;
+
+            // Đặt vị trí ngẫu nhiên cho cửa sổ
+            const randomLeft = Math.random() * (containerWidth - 300);
+            const randomTop = Math.random() * (containerHeight - 200);
+            appWindow.style.left = `${randomLeft}px`;
+            appWindow.style.top = `${randomTop}px`;
+
+            appContainer.appendChild(appWindow);
+
+            // Tính năng kéo cửa sổ
+            const windowHeader = appWindow.querySelector(".window-header");
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            windowHeader.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - appWindow.offsetLeft;
+                offsetY = e.clientY - appWindow.offsetTop;
+                document.body.style.cursor = 'move';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    appWindow.style.left = e.clientX - offsetX + 'px';
+                    appWindow.style.top = e.clientY - offsetY + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.body.style.cursor = 'default';
+            });
+        }
+
+        // Hiển thị từng cửa sổ một cách 1 giây và phát nhạc
+        const appWindows = document.querySelectorAll(".app-window");
+        const backgroundMusic = document.getElementById("backgroundMusic");
+
+        appWindows.forEach((window, index) => {
+            setTimeout(() => {
+                window.style.opacity = 1;
+                if (index === 0) {
+                    backgroundMusic.play(); // Phát nhạc khi cửa sổ đầu tiên hiển thị
+                }
+                if (index === appWindows.length - 1) {
+                    // Hiển thị nút "Ấn vào" khi cửa sổ cuối cùng được hiển thị
+                    setTimeout(() => {
+                        document.getElementById("centerButton").style.display = "block";
+                    }, 400);
+                }
+            }, index * 200);
+        });
+    </script>
+</body>
+</html>
