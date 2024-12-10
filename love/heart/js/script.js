@@ -31,7 +31,7 @@ const scene = new THREE[_0x322251(0x131)](),
     0x3e8
   ),
   renderer = new THREE[_0x322251(0x12a)]({ antialias: !![] });
-renderer["setClearColor"](0xff5555),
+renderer["setClearColor"](0xFFDAE8),
   renderer[_0x322251(0xef)](window[_0x322251(0x137)], window["innerHeight"]),
   document[_0x322251(0x136)]["appendChild"](renderer["domElement"]),
   (camera["position"]["z"] = 0x1);
@@ -137,7 +137,8 @@ new THREE["OBJLoader"]()[_0x322251(0xf2)](
       heart["geometry"]["translate"](0x0, -0.4, 0x0),
       group[_0x33f6af(0x10d)](heart),
       (heart[_0x33f6af(0x135)] = new THREE[_0x33f6af(0x12b)]({
-        color: 0xff5555,
+        //màu background
+        color: 0xEC6498,
       })),
       (originHeart = Array[_0x33f6af(0x127)](
         heart[_0x33f6af(0x118)]["attributes"][_0x33f6af(0xf1)][_0x33f6af(0x12f)]
