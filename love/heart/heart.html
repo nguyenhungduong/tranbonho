@@ -4,7 +4,23 @@
     <meta charset="UTF-8" />
     <title>For my crush</title>
     <link rel="stylesheet" href="./style.css" />
-    <meta name="viewport" content="width=1024, initial-scale=0.3, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Kiểm tra xem người dùng có sử dụng thiết bị di động (iOS, Android) không
+      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          // Nếu là thiết bị di động (bao gồm iOS), thay đổi meta tag viewport cho phù hợp
+          var meta = document.createElement('meta');
+          meta.name = "viewport";
+          meta.content = "width=1024, initial-scale=0.4, maximum-scale=1.0, user-scalable=yes";
+          document.getElementsByTagName('head')[0].appendChild(meta);
+      } else {
+          // Nếu không phải thiết bị di động, sử dụng meta tag viewport chuẩn
+          var meta = document.createElement('meta');
+          meta.name = "viewport";
+          meta.content = "width=device-width, initial-scale=1.0";
+          document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+  </script>
   </head>
 
   <body id="playButton" style="background-color: rgb(255, 218, 232);">
